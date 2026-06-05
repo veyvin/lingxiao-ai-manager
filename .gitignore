@@ -1,0 +1,72 @@
+# Rust / Tauri
+/target/
+/gen/
+.cargo-home/
+**/*.rs.bk
+*.pdb
+*.exe
+*.msi
+*.dmg
+*.app
+
+# Frontend dependencies
+node_modules/
+ui/node_modules/
+
+# Keep the checked-in static UI used by Tauri.
+!ui/dist/
+!ui/dist/**
+
+# Python caches and virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+env/
+ENV/
+*.egg-info/
+
+# Local configuration and secrets
+.env
+.env.local
+.env.*.local
+cursor-accounts.json
+tokens.txt
+*.pem
+*.key
+*.pfx
+*.p12
+*.crt
+*.csr
+api_server/config.py
+
+# Logs and runtime data
+*.log
+logs/
+*.db
+*.sqlite
+*.sqlite3
+download_server/downloads/
+download_server/*.log
+
+# Build, release, and temporary artifacts
+build/
+/dist/
+release/
+releases/
+*.tmp
+*.bak
+*.old
+old_rs_cursor_mc/
+.open-source-snapshot/
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db

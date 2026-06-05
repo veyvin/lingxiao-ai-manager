@@ -1,0 +1,69 @@
+[package]
+name = "lingxiao-ai-manager"
+version = "0.0.5"
+edition = "2021"
+authors = []
+description = "Local-first AI IDE usage visibility and privacy-focused desktop utility"
+default-run = "lingxiao-ai-manager"
+
+[lib]
+name = "rs_cursor_mc_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+path = "src/lib.rs"
+
+[[bin]]
+name = "lingxiao-ai-manager"
+path = "src/main.rs"
+
+[dependencies]
+# Desktop shell
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Async runtime
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+futures = "0.3"
+
+# HTTP requests
+reqwest = { version = "0.12", features = ["json", "rustls-tls", "http2", "stream"], default-features = false }
+
+# SQLite read access
+rusqlite = { version = "0.32", features = ["bundled"] }
+
+# Time handling
+chrono = { version = "0.4", features = ["serde"] }
+
+# Error handling
+anyhow = "1"
+thiserror = "1"
+
+# Platform directories
+dirs = "5"
+
+# URL encoding
+urlencoding = "2"
+
+# Base64 decoding
+base64 = "0.22"
+
+# Logging
+env_logger = "0.11"
+log = "0.4"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[profile.release]
+opt-level = "z"
+lto = "fat"
+codegen-units = 16
+panic = "abort"
+strip = true
+
+[profile.dev]
+opt-level = 0
+debug = true
+
+[profile.dev.package."*"]
+opt-level = 2

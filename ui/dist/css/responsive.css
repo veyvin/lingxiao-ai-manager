@@ -1,0 +1,67 @@
+/* Responsive layout rules. */
+
+@media (max-width: 767px) {
+    .tabs {
+        flex-wrap: wrap;
+        gap: 4px;
+        padding: 12px;
+    }
+
+    .tab-btn {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .tab-btn span {
+        display: none;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .stat-card {
+        padding: 8px;
+    }
+
+    .stat-card .stat-value {
+        font-size: 14px;
+    }
+
+    .stat-card .stat-label {
+        font-size: 10px;
+    }
+
+    .usage-header {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .model-table {
+        font-size: 12px;
+    }
+
+    .model-table th,
+    .model-table td {
+        padding: 8px 6px;
+    }
+
+    .account-form {
+        grid-template-columns: 1fr;
+    }
+
+    .accounts-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 479px) {
+    .stat-card {
+        flex: 1 1 100%;
+    }
+
+    .tabs {
+        flex-wrap: wrap;
+    }
+}

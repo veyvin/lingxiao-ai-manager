@@ -1,0 +1,308 @@
+/* ===================================================
+ * dialogs.css - 对话框样式
+ * 模型详情对话框
+ * =================================================== */
+
+/* ===== 对话框基础 ===== */
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.2s ease;
+}
+
+.dialog-container {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    min-width: 380px;
+    max-width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: scaleIn 0.2s ease;
+}
+
+.dialog-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.dialog-content {
+    margin-bottom: 20px;
+}
+
+.dialog-message {
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.dialog-message strong {
+    color: #2563eb;
+}
+
+.dialog-type {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 12px;
+}
+
+.dialog-type span {
+    color: #2563eb;
+    font-weight: 500;
+}
+
+.dialog-warning {
+    font-size: 12px;
+    color: #f59e0b;
+    background: #fef3c7;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+.dialog-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #f9fafb;
+    padding: 16px;
+    border-radius: 10px;
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #374151;
+}
+
+.option-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #2563eb;
+    cursor: pointer;
+}
+
+.option-item:hover {
+    color: #2563eb;
+}
+
+.dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.dialog-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 0;
+}
+
+.loading-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid #e5e7eb;
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.dialog-loading span {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* ===== 模型详情对话框 ===== */
+#model-detail-overlay .dialog-container {
+    background: #fff;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 25px 100px rgba(0, 0, 0, 0.2);
+    max-width: 950px;
+}
+
+#model-detail-overlay .dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #0f766e 0%, #155fa0 100%);
+    border-radius: 20px 20px 0 0;
+    margin: -24px -24px 24px -24px;
+}
+
+#model-detail-overlay .dialog-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#model-detail-overlay .dialog-header h3::before {
+    content: '';
+    display: none;
+}
+
+#model-detail-overlay .dialog-header h3 span {
+    color: #fef08a;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 6px;
+}
+
+#model-detail-overlay .dialog-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    font-size: 22px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+#model-detail-overlay .dialog-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+#model-detail-overlay .dialog-content {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    border: none;
+    margin-bottom: 0;
+}
+
+#model-detail-overlay #model-detail-total {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    color: #1e40af;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    border: 1px solid #bfdbfe;
+}
+
+#model-detail-overlay #model-detail-total::before {
+    content: '📋';
+    font-size: 14px;
+}
+
+#model-detail-overlay .model-table {
+    margin-top: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+#model-detail-overlay .model-table thead th {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    font-weight: 600;
+    color: #475569;
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 2px solid #e2e8f0;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+#model-detail-overlay .model-table tbody tr {
+    transition: all 0.2s;
+}
+
+#model-detail-overlay .model-table tbody tr:nth-child(even) {
+    background: #fafbfc;
+}
+
+#model-detail-overlay .model-table tbody tr:hover {
+    background: linear-gradient(90deg, #eff6ff 0%, #f8fafc 100%);
+}
+
+#model-detail-overlay .model-table tbody td {
+    padding: 12px 16px;
+    color: #334155;
+    font-size: 13px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+#model-detail-overlay .model-table tbody td:first-child {
+    font-weight: 500;
+    color: #475569;
+}
+
+#model-detail-overlay .model-table tbody td.token-value {
+    color: #6366f1;
+    font-weight: 600;
+}
+
+#model-detail-overlay .model-table tbody td.cost-value {
+    color: #f59e0b;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+#model-detail-overlay .pagination {
+    margin-top: 20px;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+#model-detail-overlay .pagination .page-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+#model-detail-overlay .pagination .page-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #0f766e 0%, #155fa0 100%);
+    color: #fff;
+    border-color: transparent;
+    transform: translateY(-1px);
+}
+
+#model-detail-overlay .pagination .page-info {
+    background: linear-gradient(135deg, #0f766e 0%, #155fa0 100%);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    min-width: auto;
+}

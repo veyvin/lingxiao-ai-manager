@@ -1,0 +1,312 @@
+/* ===================================================
+ * usage.css - 使用统计页面
+ * 账号信息、统计卡片、模型消费表格
+ * =================================================== */
+
+/* ===== 页面头部 ===== */
+.usage-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.account-avatar {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    transition: all 0.3s ease;
+}
+
+.account-avatar:hover {
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.account-info h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 2px;
+}
+
+.account-info p {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.usage-value {
+    color: #f59e0b;
+    font-weight: 600;
+}
+
+/* ===== 统计卡片网格 ===== */
+.stats-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 0;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    border-color: #cbd5e1;
+}
+
+.stat-card .stat-accent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+}
+
+.stat-accent.orange {
+    background: linear-gradient(180deg, #f59e0b 0%, #f97316 100%);
+}
+
+.stat-accent.blue {
+    background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.stat-card .stat-label {
+    font-size: 11px;
+    color: #6b7280;
+    margin-bottom: 4px;
+    white-space: nowrap;
+}
+
+.stat-card .stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stat-card:hover .stat-value {
+    transform: scale(1.02);
+}
+
+/* 主要统计卡片 */
+.stat-card.stat-primary {
+    background: linear-gradient(135deg, #0f766e 0%, #155fa0 100%);
+    border: none;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.stat-card.stat-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.stat-primary .stat-label {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 11px;
+}
+
+.stat-primary .stat-value {
+    color: #fff;
+    font-size: 18px;
+    -webkit-text-fill-color: #fff;
+}
+
+.stat-primary .stat-decoration {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+}
+
+.stat-primary .stat-decoration::after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    bottom: -15px;
+    width: 25px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+/* ===== 模型消费明细 ===== */
+.model-details {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.section-indicator {
+    width: 4px;
+    height: 24px;
+    background: linear-gradient(180deg, #0f766e 0%, #155fa0 100%);
+    border-radius: 2px;
+}
+
+.section-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e293b;
+    letter-spacing: -0.02em;
+}
+
+.model-table-container {
+    overflow-x: auto;
+}
+
+.model-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.model-table th,
+.model-table td {
+    padding: 16px 24px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.model-table th {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-bottom: 2px solid #e2e8f0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.model-table td {
+    font-size: 14px;
+    color: #334155;
+    border-bottom: 1px solid #f1f5f9;
+    height: 60px;
+}
+
+.model-table tbody tr {
+    transition: all 0.25s ease;
+}
+
+.model-table tbody tr:hover {
+    background: linear-gradient(90deg, #f8fafc 0%, #fff 100%);
+    transform: translateX(2px);
+}
+
+.model-table tbody tr:nth-child(even) {
+    background: #fafbfc;
+}
+
+.model-table tbody tr:nth-child(even):hover {
+    background: linear-gradient(90deg, #f1f5f9 0%, #fafbfc 100%);
+}
+
+.model-table .model-name {
+    color: #3b82f6;
+    font-weight: 600;
+    font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+    font-size: 13px;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1.4;
+}
+
+.model-table .cost-value {
+    color: #f59e0b;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.model-table .token-value {
+    color: #6366f1;
+    font-weight: 500;
+}
+
+.model-table .link-btn {
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    background: linear-gradient(135deg, #0f766e 0%, #155fa0 100%);
+    padding: 6px 14px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.model-table .link-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    text-decoration: none;
+}
+
+.total-row {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+    font-weight: 600;
+}
+
+.total-row td {
+    color: #1e293b;
+    border-top: 2px solid #e2e8f0;
+    font-size: 14px;
+    padding: 16px 24px;
+}
+
+.total-row .cost-value {
+    color: #f59e0b;
+    font-size: 16px;
+}
+
+.loading-row {
+    text-align: center;
+    color: #94a3b8;
+    padding: 48px !important;
+    font-size: 14px;
+}
