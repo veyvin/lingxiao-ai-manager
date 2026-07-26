@@ -73,4 +73,3 @@ jobs:
             Build artifacts are attached below. This is a draft release - edit and publish when ready.
           releaseDraft: true
           prerelease: false
-          args: --bundles all
