@@ -1,0 +1,76 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (e.g., 0.0.6). If empty, uses version from Cargo.toml'
+        required: false
+        type: string
+
+jobs:
+  release:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [macos-latest, ubuntu-22.04, windows-latest]
+
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install system dependencies (Ubuntu)
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt update
+          sudo apt install -y \
+            libwebkit2gtk-4.1-dev \
+            build-essential \
+            curl \
+            wget \
+            file \
+            libssl-dev \
+            libgtk-3-dev \
+            libayatana-appindicator3-dev \
+            librsvg2-dev
+
+      - name: Cache Cargo dependencies
+        uses: Swatinem/rust-cache@v2
+
+      - name: Get version from Cargo.toml
+        id: cargo_version
+        shell: bash
+        run: |
+          VERSION=$(grep -m 1 '^version' Cargo.toml | sed 's/version = "\(.*\)"/\1/')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Set release version
+        id: version
+        shell: bash
+        run: echo "version=${{ github.event.inputs.version || steps.cargo_version.outputs.version }}" >> $GITHUB_OUTPUT
+
+      - name: Build and publish Tauri app
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          projectPath: '.'
+          tagName: v${{ steps.version.outputs.version }}
+          releaseName: 'Lingxiao AI Manager v${{ steps.version.outputs.version }}'
+          releaseBody: |
+            ## Lingxiao AI Manager v${{ steps.version.outputs.version }}
+            
+            ### Downloads
+            - **Windows**: `.msi` installer
+            - **macOS**: `.dmg` disk image
+            - **Linux**: `.deb` package / `.AppImage`
+            
+            Build artifacts are attached below. This is a draft release - edit and publish when ready.
+          releaseDraft: true
+          prerelease: false
+          args: --bundles all
