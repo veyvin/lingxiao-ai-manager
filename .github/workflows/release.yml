@@ -71,5 +71,5 @@ jobs:
             - **Linux**: `.deb` package / `.AppImage`
             
             Build artifacts are attached below. This is a draft release - edit and publish when ready.
-          releaseDraft: true
+          releaseDraft: false
           prerelease: false
